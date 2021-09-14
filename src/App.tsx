@@ -18,9 +18,6 @@ function App() {
         >
           Learn React
         </a>
-        <div>
-          <span>88888</span>
-        </div>
       </header>
     </div>
   );
