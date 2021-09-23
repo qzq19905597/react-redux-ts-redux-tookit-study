@@ -15,7 +15,7 @@ export const Search = ({ params, setParams, users }) => {
         }}
       >
         {users.map((user) => (
-          <option key={user.id} value={user.name}>
+          <option key={user.id} value={user.id}>
             {user.name}
           </option>
         ))}
