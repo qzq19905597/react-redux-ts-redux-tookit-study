@@ -3,7 +3,7 @@ import { Search } from "./search";
 import qs from "qs";
 import { useState, useEffect } from "react";
 import { fillerEmpty } from "./utils";
-import { useDebounce, useMount } from "src/hooks";
+import { useDebounce, useMount } from "../../hooks";
 const apiUrl = process.env.REACT_APP_API_URL;
 export const Project = () => {
   const [params, setParams] = useState({
