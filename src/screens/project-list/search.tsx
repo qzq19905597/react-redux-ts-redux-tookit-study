@@ -1,4 +1,14 @@
-export const Search = ({ params, setParams, users }) => {
+import { User } from "./list";
+interface SearchProps {
+  params: {
+    name: string;
+    personId: string;
+  };
+  setParams: (params: SearchProps["params"]) => void;
+  users: User[];
+}
+
+export const Search = ({ params, setParams, users }: SearchProps) => {
   return (
     <div>
       <input

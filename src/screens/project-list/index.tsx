@@ -8,7 +8,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
 export const Project = () => {
   const [params, setParams] = useState({
     name: "",
-    personId: 0,
+    personId: "",
   });
   const debounceParams = useDebounce(params, 2000);
   const [users, setUsers] = useState([]);
