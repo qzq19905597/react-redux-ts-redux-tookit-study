@@ -1,8 +1,10 @@
-import { Project } from "screens/project-list";
+import { LoginScreen } from "screens/login/login";
+// import { Project } from "screens/project-list";
 function App() {
   return (
     <div className="App">
-      <Project />
+      {/* <Project /> */}
+      <LoginScreen />
     </div>
   );
 }
