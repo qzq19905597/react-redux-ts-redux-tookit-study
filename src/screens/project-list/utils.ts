@@ -1,7 +1,8 @@
-export const fillerEmpty = (value: any) => {
+export const fillerEmpty = <T>(value: T) => {
   const obj = { ...value };
   Object.keys(obj).forEach((item) => {
-    !obj[item] && delete obj[item];
+    console.log(item);
+    !obj[item as keyof T] && delete obj[item as keyof T];
   });
   return obj;
 };
