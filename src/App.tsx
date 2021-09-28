@@ -1,15 +1,12 @@
 import { AppProvider } from "context";
-import { LoginScreen } from "screens/login/login";
-// import { Project } from "screens/project-list";
+import { Home } from "screens/home";
 function App() {
   return (
     <div className="App">
-      {/* <Project /> */}
       <AppProvider>
-        <LoginScreen />
+        <Home />
       </AppProvider>
     </div>
   );
 }
-
 export default App;

@@ -17,10 +17,17 @@ const AuthContext = React.createContext<
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = React.useState<AuthProps | null>(null);
   const login = async (params: AuthProps) => {
-    const res = await axios.post(`${apiUrl}/login`, params);
-    const { name, password } = res.data.user;
+    const res = await fetch(`${apiUrl}/login`, {
+      method: "POST",
+      body: JSON.stringify(params),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const { name, password } = (await res.json()).user;
     setUser({ username: name, password });
   };
+
   return <AuthContext.Provider children={children} value={{ user, login }} />;
 };
 
