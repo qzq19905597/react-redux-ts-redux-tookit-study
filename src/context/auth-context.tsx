@@ -1,10 +1,11 @@
-import axios from "axios";
+import { useMount } from "hooks";
 import React, { ReactNode, useContext } from "react";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 interface AuthProps {
   username: string;
   password: string;
+  token?: string;
 }
 const AuthContext = React.createContext<
   | {
@@ -24,10 +25,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         "Content-Type": "application/json",
       },
     });
-    const { name, password } = (await res.json()).user;
-    setUser({ username: name, password });
+    const data = (await res.json()).user;
+    localStorage.setItem("token", data?.token || "");
+    setUser(data);
   };
-
+  useMount(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setUser({
+        username: "",
+        password: "",
+      });
+    }
+  });
   return <AuthContext.Provider children={children} value={{ user, login }} />;
 };
 
