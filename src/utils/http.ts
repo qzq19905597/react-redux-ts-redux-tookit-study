@@ -39,7 +39,7 @@ export const http = (
 };
 export const useHttp = () => {
   const { user } = useAuth();
-
+  // Utility Types 用法： 对传入的对象进行的类型进项操作
   return (...[path, config]: Parameters<typeof http>) =>
     http(path, { ...config, token: user ? user?.token : "" });
 };
