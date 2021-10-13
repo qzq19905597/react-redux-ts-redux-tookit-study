@@ -1,3 +1,6 @@
+import { Table } from "antd";
+import Column from "antd/lib/table/Column";
+
 interface Project {
   id: number;
   name: string;
@@ -16,27 +19,22 @@ interface ProjectListProps {
 
 export const ProjectList = ({ list, users }: ProjectListProps) => {
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>名称</th>
-          <th>负责人</th>
-        </tr>
-      </thead>
-      <tbody>
-        {list.map((item) => (
-          <tr key={item.id}>
-            <td>{item.name}</td>
-            <td>
-              {
-                users.find((user) => {
-                  return user.id === item.personId;
-                })?.name
-              }
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <Table dataSource={list} pagination={false}>
+      <Column title="名称" dataIndex="name" key="name" />
+      <Column
+        title="负责人"
+        dataIndex="personId"
+        key="personId"
+        render={(personId) => (
+          <span>
+            {
+              users.find((user) => {
+                return user.id === personId;
+              })?.name
+            }
+          </span>
+        )}
+      />
+    </Table>
   );
 };

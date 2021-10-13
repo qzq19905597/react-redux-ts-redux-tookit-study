@@ -2,7 +2,7 @@ import { useMount } from "hooks";
 import React, { ReactNode, useContext } from "react";
 
 const apiUrl = process.env.REACT_APP_API_URL;
-interface AuthProps {
+export interface AuthProps {
   username: string;
   password: string;
   token?: string;
