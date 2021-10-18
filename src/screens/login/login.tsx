@@ -1,10 +1,14 @@
+import styled from "@emotion/styled";
 import { Button, Card, Form, Input } from "antd";
 import { useAuth, AuthProps } from "context/auth-context";
+// import loginBg from "img/login/bg.jpg"
+
 // import qs from "qs";
 // import { FormEvent } from "react";
 const apiUrl = process.env.REACT_APP_API_URL;
 export const LoginScreen = () => {
-  const { user, login } = useAuth();
+  const { login } = useAuth();
+  // const { user, login } = useAuth();
   const handleLogin = (values: AuthProps) => {
     console.log(values);
 
@@ -38,7 +42,7 @@ export const LoginScreen = () => {
   };
   return (
     <>
-      <Card style={{ width: 300, margin: "0 auto" }}>
+      <LoginCard>
         <Form onFinish={handleLogin}>
           <Form.Item
             label="用户名"
@@ -73,7 +77,17 @@ export const LoginScreen = () => {
             </Button>
           </Form.Item>
         </Form>
-      </Card>
+      </LoginCard>
     </>
   );
 };
+
+const LoginCard = styled(Card)`
+  width: 300px;
+  margin: 0 auto;
+`;
+// const LoginDiv = styled.div`
+// height: 100vh;
+/* background: url(${loginBg}) no-repeat; */
+/* background-size: cover; */
+// `
