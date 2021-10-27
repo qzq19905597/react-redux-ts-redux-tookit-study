@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { Table, TableProps } from "antd";
 import Column from "antd/lib/table/Column";
 
 interface Project {
@@ -12,14 +12,14 @@ export interface User {
   id: number;
   name: string;
 }
-interface ProjectListProps {
+interface ProjectListProps extends TableProps<Project> {
   list: Project[];
   users: User[];
 }
 
-export const ProjectList = ({ list, users }: ProjectListProps) => {
+export const ProjectList = ({ list, users, ...props }: ProjectListProps) => {
   return (
-    <Table dataSource={list} pagination={false}>
+    <Table dataSource={list} pagination={false} {...props}>
       <Column title="名称" dataIndex="name" key="name" />
       <Column
         title="负责人"
